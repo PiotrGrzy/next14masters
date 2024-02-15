@@ -1,13 +1,11 @@
 import { formatMoney } from "../utils";
-import { type ProductListItemType } from "../types";
+import { type ProductListItemType } from "@/services/types";
 
 type ProductItemDescriptionProps = {
 	product: ProductListItemType;
 };
 
-export const ProductListItemDescription = ({
-	product: { name, price, description },
-}: ProductItemDescriptionProps) => {
+export const ProductListItemDescription = ({ product: { name, price, description } }: ProductItemDescriptionProps) => {
 	return (
 		<div>
 			<h2 className="">{name}</h2>

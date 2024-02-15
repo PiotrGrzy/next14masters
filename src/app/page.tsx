@@ -1,14 +1,7 @@
-import { getProductsList } from "@/cms/queries/product";
-import { ProductCounter } from "@/ui/atoms/ProductCounter";
-import { ProductList } from "@/ui/organisms/ProductList";
-
-export default async function Home() {
-	const { products } = await getProductsList();
-	console.log(products);
+export default function Home() {
 	return (
 		<div className="">
-			<ProductList products={products} />
-			<ProductCounter />
+			<h1>Home</h1>
 		</div>
 	);
 }

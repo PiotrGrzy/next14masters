@@ -9,4 +9,7 @@ export type ProductListItemType = {
     price: number;
     description: string;
     id: string;
+    category: string;
+    longDescription: string;
 }
+

@@ -1,5 +1,7 @@
-import { ProductListItem } from "../molecules/ProductListItem";
-import { type ProductListItemType } from "../types";
+import "server-only";
+
+import { ProductListItem } from "@/ui/molecules/ProductListItem";
+import { type ProductListItemType } from "@/services/types";
 
 export const ProductList = ({ products }: { products: ProductListItemType[] }) => {
 	return (
