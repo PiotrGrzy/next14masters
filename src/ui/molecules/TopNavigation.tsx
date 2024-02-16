@@ -1,3 +1,4 @@
+import { type Route } from "next";
 import { ActiveLink } from "../atoms/ActiveLink";
 
 export const TopNavigation = () => {
@@ -9,7 +10,7 @@ export const TopNavigation = () => {
 				</ActiveLink>
 			</li>
 			<li>
-				<ActiveLink href="/products" about="All">
+				<ActiveLink href={"/products" as Route} about="All">
 					Products
 				</ActiveLink>
 			</li>

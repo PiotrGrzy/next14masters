@@ -36,8 +36,9 @@ const serializeProduct = (product: Product): ProductListItemType => {
 
 }
 
-export const getProductsList = async ():Promise<ProductListItemType[]> => {
-    const response = await fetch(PRODUCTS_API_URL)
+export const getProductsList = async (pageNumber=1, take=20):Promise<ProductListItemType[]> => {
+    const offset = (pageNumber - 1) * take;
+    const response = await fetch(`${PRODUCTS_API_URL}?take=${take}&offset=${offset}`)
     const products = await response.json() as Product[]
     const serializedProducts = products.map(serializeProduct)  
 

@@ -6,7 +6,7 @@ export const getProductById = async (productId: string):Promise<ProductListItemT
     return produt
 }
 
-export const getProducts = async ():Promise<ProductListItemType[]> => {
-    const products = await getProductsList()
+export const getProducts = async (pageNumber?:number, take?:number):Promise<ProductListItemType[]> => {
+    const products = await getProductsList(pageNumber, take)
     return products
 }
