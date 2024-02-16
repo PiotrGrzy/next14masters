@@ -5,11 +5,11 @@ import { type ProductListItemType } from "@/services/types";
 
 export const ProductListItem = ({ product }: { product: ProductListItemType }) => {
 	return (
-		<Link href={`/product/${product.id}`}>
-			<li className="w-80">
+		<li className="w-80">
+			<Link href={`/product/${product.id}`}>
 				<ProductListItemImage {...product.image} />
 				<ProductListItemDescription product={product} />
-			</li>
-		</Link>
+			</Link>
+		</li>
 	);
 };
