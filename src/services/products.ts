@@ -6,7 +6,7 @@ export const getProductById = async (productId: string):Promise<ProductDetailsFr
     return produt
 }
 
-export const getProductsWithPagination = async (pageNumber?:number, take?:number):Promise<ProductListItemFragment[]> => {
-    const { products } = await getProductsList(pageNumber, take)
-    return products
+export const getProductsWithPagination = async (pageNumber?:number, take?:number):Promise<{products:ProductListItemFragment[], meta: {total: number, count: number}}> => {
+    const { products, meta } = await getProductsList(pageNumber, take)
+    return {products, meta}
 }

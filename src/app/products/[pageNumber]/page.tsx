@@ -3,7 +3,7 @@ import { Pagination } from "@/ui/organisms/Pagination";
 import { ProductList } from "@/ui/organisms/ProductList";
 
 export async function generateStaticParams() {
-	const totalPages = 10;
+	const totalPages = 2;
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => ({
 		pageNumber: pageNumber.toString(),
 	}));
@@ -12,11 +12,11 @@ export async function generateStaticParams() {
 
 export default async function ProductsPage({ params }: { params: { pageNumber: string } }) {
 	const pageNumber = parseInt(params.pageNumber, 10) || 1;
-	const products = await getProductsWithPagination(pageNumber);
+	const { products, meta } = await getProductsWithPagination(pageNumber);
 	return (
 		<div className="">
 			<ProductList products={products} />
-			<Pagination />
+			<Pagination total={meta.total} perPage={10} />
 		</div>
 	);
 }

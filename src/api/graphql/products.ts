@@ -1,11 +1,11 @@
 import { ProductGetListDocument, ProductGetByIdDocument,type ProductListItemFragment, type ProductDetailsFragment } from "@/gql/graphql";
 import { executeGraphql } from "@/api/graphql/client";
 
-export const getProductsList = async (pageNumber=1, take=10):Promise<{products:ProductListItemFragment[]}> => {
+export const getProductsList = async (pageNumber=1, take=10):Promise<{products:ProductListItemFragment[], meta: {total: number, count: number}}> => {
     const skip = (pageNumber - 1) * take;
     const graphqlResponse = await executeGraphql(ProductGetListDocument, {skip, take});
 
-    return {products: graphqlResponse.products.data};
+    return {products: graphqlResponse.products.data, meta: graphqlResponse.products.meta};
 }
 
 export const getSingleProductById = async (productId: string):Promise<ProductDetailsFragment> => {
