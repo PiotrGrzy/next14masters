@@ -1,12 +1,12 @@
-import {type ProductListItemType } from "./types"
-import { getSingleProduct, getProductsList } from "@/api/shop/product"
+import { getProductsList, getSingleProductById } from "@/api/graphql/products"
+import type { ProductListItemFragment, ProductDetailsFragment } from "@/gql/graphql"
 
-export const getProductById = async (productId: string):Promise<ProductListItemType> => {
-    const produt = await getSingleProduct(productId)
+export const getProductById = async (productId: string):Promise<ProductDetailsFragment> => {
+    const produt = await getSingleProductById(productId)
     return produt
 }
 
-export const getProducts = async (pageNumber?:number, take?:number):Promise<ProductListItemType[]> => {
-    const products = await getProductsList(pageNumber, take)
+export const getProductsWithPagination = async (pageNumber?:number, take?:number):Promise<ProductListItemFragment[]> => {
+    const { products } = await getProductsList(pageNumber, take)
     return products
 }

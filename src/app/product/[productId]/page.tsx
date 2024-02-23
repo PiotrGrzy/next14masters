@@ -1,5 +1,4 @@
 import { getProductById } from "@/services/products";
-import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
 import { ProductListItemImage } from "@/ui/atoms/ProductListItemImage";
 
 export async function generateMetadata({ params }: { params: { productId: string } }) {
@@ -15,9 +14,14 @@ export default async function SingleProductPage({ params }: { params: { productI
 
 	return (
 		<div>
-			<ProductListItemImage {...product.image} />
-			<ProductListItemDescription product={product} />
-			<p className="prose prose-lg">{product.longDescription}</p>
+			{product.images[0] && <ProductListItemImage {...product.images[0]} />}
+			<p className="prose prose-lg">
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi atque quo laudantium amet natus aliquid,
+				delectus fugiat magnam iste sequi sunt harum! Blanditiis aspernatur aliquid consectetur perferendis voluptatibus
+				libero aut sunt quidem! Qui quasi explicabo quis pariatur. Quia, odit cupiditate molestiae deserunt architecto
+				porro iure aspernatur, nobis odio at sequi et modi. Consequatur vitae voluptate nesciunt neque natus iusto
+				laudantium?
+			</p>
 		</div>
 	);
 }

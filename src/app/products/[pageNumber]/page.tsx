@@ -1,4 +1,4 @@
-import { getProducts } from "@/services/products";
+import { getProductsWithPagination } from "@/services/products";
 import { Pagination } from "@/ui/organisms/Pagination";
 import { ProductList } from "@/ui/organisms/ProductList";
 
@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
 export default async function ProductsPage({ params }: { params: { pageNumber: string } }) {
 	const pageNumber = parseInt(params.pageNumber, 10) || 1;
-	const products = await getProducts(pageNumber);
+	const products = await getProductsWithPagination(pageNumber);
 	return (
 		<div className="">
 			<ProductList products={products} />

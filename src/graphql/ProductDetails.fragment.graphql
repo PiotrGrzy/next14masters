@@ -1,0 +1,14 @@
+fragment ProductDetails on Product {
+	...ProductListItem
+	categories {
+		id
+		name
+		slug
+	}
+	description
+	collections {
+		id
+		description
+		slug
+	}
+}

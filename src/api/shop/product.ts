@@ -10,7 +10,6 @@ export type Product = {
 	category: string;
 	rating: Rating;
 	image: string;
-	longDescription: string;
 };
 
 type Rating = {
@@ -24,14 +23,13 @@ const serializeProduct = (product: Product): ProductListItemType => {
         name: product.title,
         price: product.price,
         description: product.description,
-        category: product.category,
+        category: product.category.split(','),
         image: {
             url: product.image,
             alt: product.title,
             width: 640,
             height: 480
         },
-        longDescription: product.longDescription
     }
 
 }

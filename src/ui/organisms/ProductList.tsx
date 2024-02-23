@@ -1,9 +1,9 @@
 import "server-only";
 
 import { ProductListItem } from "@/ui/molecules/ProductListItem";
-import { type ProductListItemType } from "@/services/types";
+import { type ProductListItemFragment } from "@/gql/graphql";
 
-export const ProductList = ({ products }: { products: ProductListItemType[] }) => {
+export const ProductList = ({ products }: { products: ProductListItemFragment[] }) => {
 	return (
 		<ul
 			data-testid="products-list"
