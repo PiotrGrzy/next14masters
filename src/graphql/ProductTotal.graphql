@@ -1,4 +1,4 @@
-query GetProductsCount {
+query ProductsTotal {
 	products {
 		meta {
 			total

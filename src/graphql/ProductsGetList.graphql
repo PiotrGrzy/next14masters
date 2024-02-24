@@ -1,3 +1,16 @@
+fragment ProductListItem on Product {
+	id
+	name
+	slug
+	images {
+		alt
+		height
+		width
+		id
+		url
+	}
+	price
+}
 query ProductGetList($take: Int, $skip: Int) {
 	products(take: $take, skip: $skip) {
 		data {

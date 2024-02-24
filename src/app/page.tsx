@@ -1,7 +1,12 @@
-export default function Home() {
+import { getCollectionsList } from "@/api/graphql/collections";
+import { CollectionList } from "@/ui/organisms/CollectionList";
+
+export default async function Home() {
+	const { collections } = await getCollectionsList();
+
 	return (
 		<div className="">
-			<h1>Home</h1>
+			<CollectionList collections={collections} />
 		</div>
 	);
 }

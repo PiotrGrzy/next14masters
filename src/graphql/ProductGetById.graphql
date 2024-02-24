@@ -1,0 +1,29 @@
+fragment ProductDetails on Product {
+	id
+	name
+	slug
+	images {
+		alt
+		height
+		width
+		id
+		url
+	}
+	price
+	categories {
+		id
+		name
+		slug
+	}
+	description
+	collections {
+		id
+		description
+		slug
+	}
+}
+query ProductGetById($id: ID) {
+	product(id: $id) {
+		...ProductDetails
+	}
+}

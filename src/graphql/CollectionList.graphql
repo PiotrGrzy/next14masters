@@ -1,0 +1,14 @@
+fragment CollectionListItem on Collection {
+	id
+	description
+	name
+	slug
+}
+
+query CollectionsList {
+	collections {
+		data {
+			...CollectionListItem
+		}
+	}
+}
