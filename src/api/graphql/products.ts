@@ -1,7 +1,12 @@
-import { ProductGetListDocument, ProductGetByIdDocument,type ProductListItemFragment, type ProductDetailsFragment, ProductsGetByCategorySlugDocument, ProductsGetByCollectionSlugDocument } from "@/gql/graphql";
+import { ProductGetListDocument, ProductGetByIdDocument,type ProductListItemFragment, type ProductDetailsFragment, ProductsGetByCategorySlugDocument, ProductsGetByCollectionSlugDocument, ProductsGetBySearchQueryDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/api/graphql/client";
 
-export const getProductsList = async (pageNumber=1, take=10):Promise<{products:ProductListItemFragment[], meta: {total: number, count: number}}> => {
+type Meta = {
+    total: number;
+    count: number;
+}
+
+export const getProductsList = async (pageNumber=1, take=10):Promise<{products:ProductListItemFragment[], meta: Meta}> => {
     const skip = (pageNumber - 1) * take;
     const graphqlResponse = await executeGraphql(ProductGetListDocument, {skip, take});
 
@@ -30,4 +35,10 @@ export const getProductsByCollection = async (slug: string):Promise<{products:Pr
     const graphqlResponse = await executeGraphql(ProductsGetByCollectionSlugDocument, {slug});
 
     return {products: graphqlResponse.collection?.products || []};
+}
+
+export const getProductsBySearch = async (query: string):Promise<{products:ProductListItemFragment[], meta: Meta}> => {
+    const graphqlResponse = await executeGraphql(ProductsGetBySearchQueryDocument, {query});
+    
+    return {products: graphqlResponse.products.data, meta: graphqlResponse.products.meta};
 }

@@ -1,4 +1,5 @@
-import { TopNavigation } from "../molecules/TopNavigation";
+import { SearchInput } from "@/ui/atoms/SearchInput";
+import { TopNavigation } from "@/ui/molecules/TopNavigation";
 
 export const Header = () => {
 	return (
@@ -9,6 +10,7 @@ export const Header = () => {
 					<p className="text-slate-200">We have a lot of products for you to choose from.</p>
 				</div>
 				<TopNavigation />
+				<SearchInput />
 			</div>
 		</header>
 	);

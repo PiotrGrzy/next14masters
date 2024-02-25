@@ -1,0 +1,11 @@
+query ProductsGetBySearchQuery($query: String!) {
+	products(search: $query) {
+		data {
+			...ProductListItem
+		}
+		meta {
+			total
+			count
+		}
+	}
+}
